@@ -1,0 +1,20 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag copa-image-1
+      - name: Build the Docker docker-compose
+        run: docker-compose build
+      - name: Check linting flake8
+        run: docker-compose run app sh -c "flake8"
