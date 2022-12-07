@@ -40,7 +40,7 @@ class UpdateEmployee(graphene.Mutation):
         names=graphene.String()
         employee_id=graphene.String()
         address=graphene.String()
-        phone_number=graphene.String() 
+        phone_number=graphene.String()  
 
     employee=graphene.Field(EmployeeType)
 
